@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>calculations</title>
+</head>
+<body>
+<h2>JavaScript Functions</h2>
+
+
+
+    <p>Please, enter numbers separated by commas</p>
+
+    <input type="text" id="inputData"><br><br>
+
+    <input type="radio" name="func" value="max"> Maximum of numbers<br>
+    <input type="radio" name="func" value="pow"> Squaring<br>
+    <input type="radio" name="func" value="sqrt" onclick="sqrt()"> Square root<br><br>
+
+    <button onclick="save()">Calculate</button><br><br>
+
+<input type="text" id="result" readonly><br>
+
+<p>This example calls a function which performs a calculation and returns the result:</p>
+
+<p id="demo"></p>
+
+<script>
+
+    var max = new Function ("arr","var result = Math.max.apply(null, arr); return result;");
+    var pow = (number)=>number * number;
+
+
+    function sqrt() {
+        var inp = document.getElementById('inputData').value;
+        var arr = inp.split(',').map(Number);
+        var result=arr.map(Math.sqrt);
+        return result;
+        }
+
+        function save() {
+            document.getElementById("result").value = sqrt();
+        }
+
+</script>
+</body>
+</html>
