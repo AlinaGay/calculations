@@ -7,41 +7,50 @@
 <body>
 <h2>JavaScript Functions</h2>
 
+<p>Please, enter numbers separated by commas</p>
 
+<input type="text" id="inputData"><br><br>
 
-    <p>Please, enter numbers separated by commas</p>
+<input id="max" name="func" type="radio"> Maximum of numbers<br>
+<input id="pow" name="func" type="radio"> Squaring<br>
+<input id="sqrt" name="func" type="radio"> Square root<br><br>
 
-    <input type="text" id="inputData"><br><br>
+<button onclick="calculations()">Calculate</button><br><br>
 
-    <input type="radio" name="func" value="max"> Maximum of numbers<br>
-    <input type="radio" name="func" value="pow"> Squaring<br>
-    <input type="radio" name="func" value="sqrt" onclick="sqrt()"> Square root<br><br>
+<input id="result" readonly type="text"><br>
 
-    <button onclick="save()">Calculate</button><br><br>
-
-<input type="text" id="result" readonly><br>
-
-<p>This example calls a function which performs a calculation and returns the result:</p>
-
-<p id="demo"></p>
 
 <script>
-
-    var max = new Function ("arr","var result = Math.max.apply(null, arr); return result;");
-    var pow = (number)=>number * number;
-
-
-    function sqrt() {
+    function calculations() {
         var inp = document.getElementById('inputData').value;
-        var arr = inp.split(',').map(Number);
-        var result=arr.map(Math.sqrt);
-        return result;
+        const arr = inp.split(',').map(Number);
+
+        var max =(arr)=> Math.max.apply(null, arr);
+
+        var pow= new Function ("number", "return number*number");
+
+        function sqrt(arr) {
+            var result=arr.map(Math.sqrt);
+            return result;
         }
 
-        function save() {
-            document.getElementById("result").value = sqrt();
+        if (document.getElementById('max').checked === true){
+            document.getElementById("result").value = max(arr);
         }
 
+        if (document.getElementById('pow').checked === true){
+            document.getElementById("result").value = arr.map(pow);
+        }
+
+        if (document.getElementById('sqrt').checked === true){
+            document.getElementById("result").value = sqrt(arr);
+        }
+
+        if (document.getElementById('max').checked === false && document.getElementById('pow').checked === false && document.getElementById('sqrt').checked === false) {
+            alert('Please, choose calculation method');
+        }
+    }
 </script>
 </body>
 </html>
+
