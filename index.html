@@ -11,9 +11,9 @@
 
 <input type="text" id="inputData"><br><br>
 
-<input id="max" name="func" type="radio"> Maximum of numbers<br>
-<input id="pow" name="func" type="radio"> Squaring<br>
-<input id="sqrt" name="func" type="radio"> Square root<br><br>
+<input id="max" name="func" type="radio"> Maximum number<br>
+<input id="pow" name="func" type="radio"> Number in quadratic degree<br>
+<input id="sqrt" name="func" type="radio"> Square root of a number<br><br>
 
 <button onclick="calculations()">Calculate</button><br><br>
 
@@ -30,20 +30,20 @@
         var pow= new Function ("number", "return number*number");
 
         function sqrt(arr) {
-            var result=arr.map(Math.sqrt);
+            var result = arr.map(Math.sqrt);
             return result;
         }
 
         if (document.getElementById('max').checked === true){
-            document.getElementById("result").value = max(arr);
+            document.getElementById('result').value = max(arr);
         }
 
         if (document.getElementById('pow').checked === true){
-            document.getElementById("result").value = arr.map(pow);
+            document.getElementById('result').value = arr.map(pow);
         }
 
         if (document.getElementById('sqrt').checked === true){
-            document.getElementById("result").value = sqrt(arr);
+            document.getElementById('result').value = sqrt(arr);
         }
 
         if (document.getElementById('max').checked === false && document.getElementById('pow').checked === false && document.getElementById('sqrt').checked === false) {
